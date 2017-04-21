@@ -4,7 +4,12 @@
    "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
 
 <tiles-definitions>
+	<!--==================== Chapter 8 ====================-->
 	<definition name="layoutTest" path="/jsp/tiles/layout.jsp">
-		<put name="header" value="/jsp/tiles/header.jsp"/>
+		<put name="title" value="レイアウト テスト"/>
+		<put name="header" value="sp/tiles/header.jsp"/>
+		<put name="menu" value="/jsp/chap08tilesmenu.jsp"/>
+		<put name="body" value="/jsp/tiles/body.jsp"/>
+		<put name="footer" value="/jsp/tiles/footer.jsp"/>
 	</definition>
 </tiles-definitions>

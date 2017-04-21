@@ -2,9 +2,12 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 <html>
 <head>
-<title>Insert title here</title>
+<title>‚½‚¢‚Æ‚é</title>
 </head>
 <body>
-	      <tiles:insert attribute="header"/>
+
+		<tiles:getAsString name="title"/>
+	      <%-- <tiles:insert attribute="header"></tiles:insert> --%>
+
 </body>
 </html>
