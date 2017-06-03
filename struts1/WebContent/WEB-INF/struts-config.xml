@@ -17,6 +17,7 @@
         <form-property name="post" type="java.lang.String[]" size="2" initial="'1','1'"/>
       </form-bean>
       <form-bean name="form_sampleBean" type="form.SampleBean"/>
+      <form-bean name="form_logicBean" type="form.LogicBean"/>
     </form-beans>
 
 
@@ -65,6 +66,16 @@
             validate="false"
             input="/pages/input.jsp">
             <forward name="success" path="/WEB-INF/pages/beanWrite.jsp" />
+        </action>
+
+        <action
+            path="/beanLogic"
+            type="action.BeanLogicAction"
+            name="form_logicBean"
+            scope="request"
+            validate="false"
+            input="/pages/input.jsp">
+            <forward name="success" path="/WEB-INF/pages/beanLogic.jsp" />
         </action>
 
 
