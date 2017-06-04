@@ -92,7 +92,20 @@
         <action
             path="/forward"
             type="org.apache.struts.actions.ForwardAction"
-            parameter="/WEB-INF/pages/forward.jsp"/>
+            name="form_sampleBean"
+            parameter="/WEB-INF/pages/forward.jsp">
+        </action>
+
+        <action
+            path="/operateUser"
+            type="action.OperateUserAction"
+            name="form_sampleBean"
+            parameter="method">
+            <forward name="create" path="/WEB-INF/pages/chap06/create.jsp" />
+            <forward name="update" path="/WEB-INF/pages/chap06/update.jsp" />
+            <forward name="delete" path="/WEB-INF/pages/chap06/delete.jsp" />
+            <forward name="cancelled" path="/WEB-INF/pages/chap06/cancelled.jsp" />
+        </action>
 
             <!-- Default "Welcome" action -->
             <!-- Forwards to Welcome.jsp -->

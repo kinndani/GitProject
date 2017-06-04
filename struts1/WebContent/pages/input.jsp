@@ -45,5 +45,14 @@
 	<html:form action="/forward">
 		<html:submit value="ForwardActionで送信"/>
 	</html:form>
+	<hr>
+	<html:form action="/operateUser" method="POST">
+		<html:text property="id"/><br>
+		<html:text property="name"/><br>
+		<html:submit value="create" property="method"/>
+		<html:submit value="update" property="method"/>
+		<html:submit value="delete" property="method"/>
+		<html:cancel/>
+	</html:form>
 </body>
 </html>
