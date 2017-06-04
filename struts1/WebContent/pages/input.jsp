@@ -37,5 +37,13 @@
 	<html:form action="/beanLogic">
 		<html:submit value="beanLogicに送信"/>
 	</html:form>
+	<hr>
+	<html:form action="/nested">
+		<html:submit value="Nestedに送信"/>
+	</html:form>
+	<hr>
+	<html:form action="/forward">
+		<html:submit value="ForwardActionで送信"/>
+	</html:form>
 </body>
 </html>

@@ -1,10 +1,15 @@
-<%@page import="java.util.List"%>
+<%@page import="java.util.List,java.util.ArrayList,java.util.Map,java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
 <!DOCTYPE>
+	<%
+	Map<String,String> map2 = new HashMap<>();
+	String str1 = null;
+	String str2 = new String("");
+	%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +25,7 @@
 	</logic:iterate>
 	<br>
 	logic:iterate(List)<br>
-	<%java.util.List list = new java.util.ArrayList();
+	<%List<String> list = new ArrayList<>();
 	list.add("zero");
 	list.add("one");
 	list.add("two");
@@ -34,7 +39,7 @@
 	</logic:iterate>
 	<br>
 	logic:iterate(Map)<br>
-	<% java.util.Map map = new java.util.HashMap();
+	<% Map<String,String>map = new HashMap<>();
 	   map.put("zero", "No.0");
 	   map.put("one", "No.1");
 	   map.put("two", "No.2");
@@ -99,6 +104,60 @@
 	  foo_integer 100 is less than 100.
 	</logic:lessThan>
 	<hr>
-	<html:link action="index">back to index</html:link>
+
+	<logic:empty name="map2">
+	  map has no elements.
+	</logic:empty>
+	<logic:empty name="str1">
+	  str1 is null or empty string.
+	</logic:empty>
+	<logic:notEmpty name="str2">
+	  str2 is not null or empty.
+	</logic:notEmpty>
+	<hr>
+	<logic:present parameter="foo">
+  	<bean:parameter id="foo" name="foo"/>
+	  foo=<%= foo %>
+	</logic:present>
+	<hr>
+	<logic:notPresent user="tomcat">
+	  invalid access.
+	</logic:notPresent>
+	<hr>
+	<logic:messagesPresent>
+	  以下のエラーが発生しました。
+	  <br><html:errors/>
+	</logic:messagesPresent>
+	<logic:messagesNotPresent>
+	  エラーは発生しませんでした。
+	</logic:messagesNotPresent>
+	<hr>
+	<%
+	  String str3 = new String("文　字　列　１");
+	  String str4 = new String("文　字　列　２");
+	  String[] str_array = {str3, str4};
+	  request.setAttribute("str1", str3);
+	  request.setAttribute("str2", str4);
+	  request.setAttribute("str_array",str_array);
+	%>
+	<logic:messagesPresent name="str1"><bean:write name="str1"/></logic:messagesPresent><br>
+	<logic:messagesPresent name="str2"><bean:write name="str2"/></logic:messagesPresent><br>
+	<logic:messagesPresent name="str3"><bean:write name="str3"/></logic:messagesPresent><br>
+	<logic:messagesNotPresent name="str3">
+	  str3 は request スコープに見つかりません。
+	</logic:messagesNotPresent><br>
+
+	<logic:messagesPresent name="str_array">
+	  <logic:iterate name="str_array" id="str" indexId="id">
+	    <%= id %>→<bean:write name="str"/><br>
+	  </logic:iterate>
+	</logic:messagesPresent>
+	<hr>
+	<%-- <logic:forward name="global"/> --%>
+	<hr>
+<%-- 	<% request.setAttribute("key", "techscore"); %>
+	<logic:redirect href="http://www.google.com/search" paramId="q" paramName="key"/>
+	<hr>
+	<html:link action="index">back to index</html:link> --%>
 </body>
 </html>

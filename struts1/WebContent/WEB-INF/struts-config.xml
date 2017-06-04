@@ -30,6 +30,7 @@
 <!-- =========================================== Global Forward Definitions -->
 
     <global-forwards>
+      <forward name="global" path="/WEB-INF/pages/global.jsp" />
     </global-forwards>
 
 
@@ -78,6 +79,20 @@
             <forward name="success" path="/WEB-INF/pages/beanLogic.jsp" />
         </action>
 
+        <action
+            path="/nested"
+            type="action.NestedAction"
+            name="form_sampleBean"
+            scope="request"
+            validate="false"
+            input="/pages/input.jsp">
+            <forward name="success" path="/WEB-INF/pages/nested.jsp" />
+        </action>
+
+        <action
+            path="/forward"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/WEB-INF/pages/forward.jsp"/>
 
             <!-- Default "Welcome" action -->
             <!-- Forwards to Welcome.jsp -->
