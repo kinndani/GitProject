@@ -54,5 +54,38 @@
 		<html:submit value="delete" property="method"/>
 		<html:cancel/>
 	</html:form>
+	<hr>
+	<html:form action="/operateUser2" method="POST">
+		<html:text property="id"/><br>
+		<html:text property="name"/><br>
+		<html:submit property="method">
+			<bean:message key="button.create"/>
+		</html:submit>
+		<html:submit property="method">
+			<bean:message key="button.update"/>
+		</html:submit>
+		<html:submit property="method">
+			<bean:message key="button.delete"/>
+		</html:submit>
+		<html:cancel value="キャンセル"/>
+	</html:form>
+	<hr>
+	<html:form action="/createUser" method="POST">
+		<html:submit property="method">
+			<bean:message key="button.create"/>
+		</html:submit>
+	</html:form>
+	<html:form action="/updateUser" method="POST">
+		<html:submit property="method">
+			<bean:message key="button.update"/>
+		</html:submit>
+	</html:form>
+	<html:form action="/deleteUser" method="POST">
+		<html:submit property="method">
+			<bean:message key="button.delete"/>
+		</html:submit>
+	</html:form>
+
+
 </body>
 </html>

@@ -107,6 +107,29 @@
             <forward name="cancelled" path="/WEB-INF/pages/chap06/cancelled.jsp" />
         </action>
 
+        <action
+            path="/operateUser2"
+            type="action.OperateUser2Action"
+            name="form_sampleBean"
+            parameter="method"
+            scope="request"
+            validate="false"
+            input="/pages/input.jsp">
+            <forward name="create" path="/WEB-INF/pages/chap06/create.jsp" />
+            <forward name="update" path="/WEB-INF/pages/chap06/update.jsp" />
+            <forward name="delete" path="/WEB-INF/pages/chap06/delete.jsp" />
+            <forward name="cancelled" path="/WEB-INF/pages/chap06/cancelled.jsp" />
+            <forward name="unspecified" path="/WEB-INF/pages/chap06/unspecified.jsp" />
+        </action>
+
+        <action
+            path="/*User"
+            type="action.MappingAction"
+            name="form_sampleBean"
+            parameter="{1}">
+            <forward name="success" path="/WEB-INF/pages/chap06/{1}.jsp" />
+        </action>
+
             <!-- Default "Welcome" action -->
             <!-- Forwards to Welcome.jsp -->
         <action
