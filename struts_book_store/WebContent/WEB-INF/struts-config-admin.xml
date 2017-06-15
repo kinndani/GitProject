@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <form-beans>
+  </form-beans>
+
+  <action-mappings>
+    <action path="/index"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/WEB-INF/jsp/chap08/admin/index.jsp"/>
+    <action path="/switchUser"
+            type="org.apache.struts.actions.SwitchAction"/>
+    <action path="/toUser"
+            type="chap06.SwitchModuleAction">
+	  <!-- Struts 1.1 -->
+	  <!--
+      <forward name="success"
+               contextRelative="true"
+               path="/index.do"
+               redirect="true"/>
+	  -->
+	  <!-- Struts 1.2 -->
+      <forward name="success" module="/" path="/index.do" />
+    </action>
+
+    <action path="/roleTest"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="role.test"/>
+
+    <!-- Admin facilities -->
+    <action path="/reload"
+            type="org.apache.struts.tiles.actions.ReloadDefinitionsAction"/>
+    <action path="/view"
+            type="org.apache.struts.tiles.actions.ViewDefinitionsAction"/>
+  </action-mappings>
+
+  <message-resources parameter="properties.Messages"/>
+
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config"
+                  value="/WEB-INF/tiles-defs.xml"/>
+  </plug-in>
+
+</struts-config>

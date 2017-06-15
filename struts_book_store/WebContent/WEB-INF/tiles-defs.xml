@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<!--==================== Chapter 8 ====================-->
+	<definition name="test" path="/WEB-INF/jsp/chap08/test.jsp" />
+	<definition name="layoutTest" path="/WEB-INF/jsp/chap08/layout.jsp">
+		<put name="title" value="レイアウト テスト"/>
+		<put name="header" value="/WEB-INF/jsp/chap08/header.jsp"/>
+		<put name="menu" value="/WEB-INF/jsp/chap08/menu.jsp"/>
+		<put name="body" value="/WEB-INF/jsp/chap08/body.jsp"/>
+		<put name="footer" value="/WEB-INF/jsp/chap08/footer.jsp"/>
+	</definition>
+</tiles-definitions>
