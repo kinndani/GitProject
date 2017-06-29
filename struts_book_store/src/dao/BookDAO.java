@@ -5,12 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import form.Book;
+import bean.Book;
 
 public class BookDAO {
 
@@ -75,21 +73,6 @@ public class BookDAO {
 		}
 		System.out.println("正常にreturnを成功");
 		return bookMap;
-	}
-
-	public static Book[] searchByKeyword(Book[] books, String keyword) {
-
-		List<Book> bookList = new ArrayList<Book>();
-		for (int i = 0; i < books.length; i++) {
-			if (books[i].getTitle().indexOf(keyword) > -1) {
-				bookList.add(books[i]);
-			} else if (books[i].getAuthor().indexOf(keyword) > -1) {
-				bookList.add(books[i]);
-			} else if (books[i].getPublisher().indexOf(keyword) > -1) {
-				bookList.add(books[i]);
-			}
-		}
-		return (Book[]) bookList.toArray(new Book[bookList.size()]);
 	}
 
 }

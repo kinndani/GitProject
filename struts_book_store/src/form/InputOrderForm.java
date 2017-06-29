@@ -7,6 +7,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+import bean.Order;
+
 public class InputOrderForm extends ActionForm {
 
 	private int[] nums = null;
@@ -19,6 +21,7 @@ public class InputOrderForm extends ActionForm {
 	}
 
 	public void setNums(int[] nums) {
+		System.out.println("nums="+nums[0]);
 		this.nums = nums;
 	}
 

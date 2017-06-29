@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
+import bean.Book;
 import dao.BookDAO;
-import form.Book;
 import other.Globals;
 
 public class BookManager implements java.io.Serializable {
@@ -16,6 +16,10 @@ public class BookManager implements java.io.Serializable {
 	public BookManager(ServletContext context) {
 		System.out.println("initが動かないので代用");
 		context.setAttribute(Globals.CONTEXT_BOOKS, BookDAO.loadAllData());
+	}
+
+	public BookManager() {
+
 	}
 
 	public void init(ServletContext context) throws SQLException {
@@ -30,7 +34,7 @@ public class BookManager implements java.io.Serializable {
 
 		System.out.println("Bookインスタンスをsessionスコープに登録");
 		Book[] books = collection.toArray(new Book[collection.size()]);
-		session.setAttribute(Globals.SESSION_SEARCHED_BOOKS, BookDAO.searchByKeyword(books, keyword));
+		session.setAttribute(Globals.SESSION_SEARCHED_BOOKS, BookBL.searchByKeyword(books, keyword));
 	}
 
 	// 書籍マスタデータを対象に、キーワード検索を行う
@@ -38,6 +42,13 @@ public class BookManager implements java.io.Serializable {
 
 		System.out.println("BookManagerクラスのgetBookMaster実行");
 		return (Map) context.getAttribute(Globals.CONTEXT_BOOKS);
+	}
+
+	// 指定した書籍番号を持つBook配列を取得
+	public Book[] getSelectedBooks(HttpSession session, String[] ids) {
+
+		Book[] searchedBooks = (Book[]) session.getAttribute(Globals.SESSION_SEARCHED_BOOKS);
+		return BookBL.searchByIds(searchedBooks, ids);
 	}
 
 }
